@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+pandas
+pdfplumber
+python-docx
+requests
+io
+pandas
+openai
+csv
+pathlib
+subprocess
+tempfile
+uuid
+re
