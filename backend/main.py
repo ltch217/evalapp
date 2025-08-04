@@ -1,6 +1,8 @@
-from fastapi import FastAPI, UploadFile, File, Form, BackgroundTasks
+from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, HTMLResponse
+from fastapi.staticfiles import StaticFiles
+import os
 import io
 import csv
 from evaluateResumes import evaluate_csv
@@ -8,6 +10,15 @@ from downloadPDFs import create_zip_of_pdfs
 
 
 app = FastAPI()
+
+app.mount("/static", StaticFiles(directory="frontend/dist/assets"), name="static")
+
+@app.get("/{full_path:path}", response_class=HTMLResponse)
+async def serve_vue_app(full_path: str):
+    index_path = os.path.join("frontend", "dist", "index.html")
+    with open(index_path, "r") as f:
+        html_content = f.read()
+    return HTMLResponse(content=html_content, status_code=200)
 
 
 app.add_middleware(

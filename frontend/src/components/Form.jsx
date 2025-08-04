@@ -23,7 +23,7 @@ function Form() {
     formData.append('api_key', apiKey);
     formData.append('resume_col_title', resumeColTitle);
 
-    const response = await fetch('http://localhost:8000/process', {
+    const response = await fetch('https://evalapp.onrender.com/process', {
         method: 'POST',
         body: formData,
     });
@@ -58,7 +58,7 @@ function Form() {
       formData.append('file', file);
       formData.append('resume_col_title', resumeColTitle);
 
-      const response = await fetch('http://localhost:8000/create-zip', {
+      const response = await fetch('https://evalapp.onrender.com/create-zip', {
         method: "POST",
         body: formData,
       });
