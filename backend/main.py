@@ -14,7 +14,7 @@ from evaluateResumes import evaluate_csv
 from downloadPDFs import create_zip_of_pdfs
 
 current_dir = os.path.dirname(__file__)
-static_dir = os.path.join(current_dir, "../frontend/dist/assets")
+static_dir = os.path.join(current_dir, "../frontend/dist")
 
 app = FastAPI()
 
