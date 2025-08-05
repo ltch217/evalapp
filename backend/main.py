@@ -11,7 +11,7 @@ from downloadPDFs import create_zip_of_pdfs
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="frontend/dist/assets"), name="static")
+app.mount("/static", StaticFiles(directory="../frontend/dist/assets"), name="static")
 
 @app.get("/{full_path:path}", response_class=HTMLResponse)
 async def serve_vue_app(full_path: str):
