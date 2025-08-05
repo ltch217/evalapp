@@ -6,3 +6,4 @@ python-docx
 requests
 pandas
 openai
+python-multipart

@@ -3,8 +3,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 import os
+#import sys
 import io
 import csv
+
+# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# sys.path.append(BASE_DIR)
+
 from evaluateResumes import evaluate_csv
 from downloadPDFs import create_zip_of_pdfs
 
