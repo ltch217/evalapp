@@ -13,14 +13,16 @@ import csv
 from evaluateResumes import evaluate_csv
 from downloadPDFs import create_zip_of_pdfs
 
+current_dir = os.path.dirname(__file__)
+static_dir = os.path.join(current_dir, "../frontend/dist/assets")
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="../frontend/dist/assets"), name="static")
+app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
 @app.get("/{full_path:path}", response_class=HTMLResponse)
 async def serve_vue_app(full_path: str):
-    index_path = os.path.join("frontend", "dist", "index.html")
+    index_path = os.path.join("..", "frontend", "dist", "index.html")
     with open(index_path, "r") as f:
         html_content = f.read()
     return HTMLResponse(content=html_content, status_code=200)
