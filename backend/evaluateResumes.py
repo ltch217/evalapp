@@ -79,6 +79,6 @@ def evaluate_csv(csv : bytes, prompt_text: str, apiKey : str, resume_col_title :
             eval = "Error: no text"
         else:
             prompt = create_prompt(prompt_text, resume_text)
-            eval = 'iterating!' #openAI_call(prompt, apiKey)
+            eval = openAI_Call(prompt, apiKey)
         results.append([name, eval])
     return results
