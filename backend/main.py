@@ -1,14 +1,9 @@
 from fastapi import FastAPI, UploadFile, File, Form
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 import os
-#import sys
 import io
 import csv
-
-# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# sys.path.append(BASE_DIR)
 
 from evaluateResumes import evaluate_csv
 from downloadPDFs import create_zip_of_pdfs
@@ -26,15 +21,6 @@ async def serve_vue_app(full_path: str):
     with open(index_path, "r") as f:
         html_content = f.read()
     return HTMLResponse(content=html_content, status_code=200)
-
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 
 @app.post("/process")
